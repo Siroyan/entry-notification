@@ -1,3 +1,8 @@
 main: net.siroyan.dev.mc.plugin.entrynotification.App
 name: entry-notification
 version: 0.1
+
+commands:
+  discord:
+    aliases: [ dis ]
+    description: You can say hello in discord.
