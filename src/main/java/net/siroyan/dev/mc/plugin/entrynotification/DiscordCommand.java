@@ -8,9 +8,11 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class DiscordCommand implements CommandExecutor {
     
@@ -24,7 +26,10 @@ public class DiscordCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("discord")) {
             if (args.length == 1) {
-                String json = "{ \"username\":\" " + sender.getName() + " \" ,\"content\":\" " + args[0] + "\" }";
+                Player player = Bukkit.getPlayer(sender.getName());
+                String uuid = player.getUniqueId().toString();
+                System.out.println("https://crafatar.com/avatars/" + uuid);
+                String json = "{ \"username\": \"" + sender.getName() + "\" ,\"avatar_url\": \"" + "https://crafatar.com/avatars/" + uuid + "\" ,\"content\": \"" + args[0] + "\" }";
                 try {
                     String statusCode = sendMsgToDiscord(json);
                     System.out.println(statusCode);
