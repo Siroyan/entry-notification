@@ -9,5 +9,6 @@ public class App extends JavaPlugin {
         FileConfiguration conf = getConfig();
         DiscordGateway dg = new DiscordGateway(conf.getString("DiscordWebhookUrl"));
         getCommand("discord").setExecutor(new DiscordCommand(dg));
+        getServer().getPluginManager().registerEvents(new EntryEvent(dg), this);
     }
 }
