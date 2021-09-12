@@ -3,6 +3,7 @@ package net.siroyan.dev.mc.plugin.entrynotification;
 import java.io.IOException;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
@@ -14,6 +15,7 @@ public class EntryEvent implements Listener {
         this.dg = dg;
     }
 
+    @EventHandler
     public void onEntry(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         try {
