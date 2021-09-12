@@ -7,6 +7,7 @@ public class App extends JavaPlugin {
     @Override
     public void onEnable() {
         FileConfiguration conf = getConfig();
-        getCommand("discord").setExecutor(new DiscordCommand(conf.getString("DiscordWebhookUrl")));
+        DiscordGateway dg = new DiscordGateway(conf.getString("DiscordWebhookUrl"));
+        getCommand("discord").setExecutor(new DiscordCommand(dg));
     }
 }
